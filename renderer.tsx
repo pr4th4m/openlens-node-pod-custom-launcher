@@ -26,7 +26,7 @@ export default class CustomLauncherRenderer extends Renderer.LensExtension {
       }
     },
     {
-      title: "Suffix command",
+      title: "Suffix command (optional)",
       components: {
         Input: () => <CustomLauncherSuffixInput />,
         Hint: () => <CustomLauncherSuffixHint/>

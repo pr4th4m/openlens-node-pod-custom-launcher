@@ -1,42 +1,61 @@
-# openlens-node-pod-custom-launcher README
+# Openlens node / pod custom launcher extension
 
-This is the README for your extension "openlens-node-pod-custom-launcher". After writing up a brief description, we recommend including the following sections.
+This extension lets you define a custom terminal launcher to open pod/node shell, logs etc
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Ability to define custom launcher terminal as prefix and suffix to lens kubectl command 
+- Open pod/node shell, pod logs, attach to pod from pod menu
 
-For example if there is an image subfolder under your extension project workspace:
+## Prerequisite
 
-\!\[feature X\]\(images/feature-x.png\)
+- Switch to relevant context in kubectl
+  ```bash
+  kubectl config use-context <name>
+  ```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+### Installation
+In OpenLens, navigate to the Extensions. In the text box, enter the name of this plugin:
+```
+@pr4th4m/openlens-node-pod-custom-launcher
+```
+Click "Install", and after a few moments, the plugin should appear in the list of installed extensions and be enabled.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Define custom launcher
+In OpenLens, navigate to Settings > Extensions, click on this extension name 
+![Extension preference](./docs/preference.png)
+There are two params available
+- Prefix command - This command will prefix kubectl in lens
+- Suffix command (optional) - This command will suffixed kubectl in lens
 
-## Known Issues
+### Open with pod menu
+In OpenLens, navigate to Clusters > Workloads > Pods, click on a pod
+![Pod menu](./docs/pod_menu.png)
+Clicking on the options highlighted will open pod shell, logs etc in the custom launcher terminal program you configured above
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Quick debugging
+- In OpenLens, navigate to View > Toggle developer tools
+- Complete command with prefix and suffix is logged
+- Tweak prefix and suffix command in Settings/Preferences
 
-## Release Notes
+## Development
+- To develop plugin locally
+  ```bash
+  npm ci
+  npm run build
+  npm pack
+  ```
+- The tarball for the extension will be placed in the current directory. In OpenLens, navigate to the Extensions and provide the path to the tarball to be loaded, or drag and drop the extension tarball into the OpenLens window. After loading for a moment, the extension should appear in the list of enabled extensions.
+- [More advanced option is to sym-link extension directory](https://github.com/lensapp/lens/blob/master/docs/extensions/get-started/your-first-extension.md)
 
-Users appreciate release notes as you update your extension.
+## References
+- https://github.com/lensapp/lens
+- https://github.com/alebcay/openlens-node-pod-menu 
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
-## TODO:
+## TODO
 
 - Add custom launcher terminal to nodes
 - Add test cases
+- Switch kubectl context before opening in pod menu
