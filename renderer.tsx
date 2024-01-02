@@ -5,8 +5,8 @@ import {
   CustomLauncherPrefixInput,
   CustomLauncherSuffixHint,
   CustomLauncherSuffixInput,
-} from "./src/custom-launcher-preference";
-import { CustomLauncherPreferencesStore } from "./src/custom-launcher-preference-store";
+} from "./src/preference";
+import { CustomLauncherPreferencesStore } from "./src/preference-store";
 import { PodLogsMenu } from "./src/log-menu"
 import { PodShellMenu } from "./src/shell-menu"
 import { PodAttachMenu } from "./src/attach-menu"

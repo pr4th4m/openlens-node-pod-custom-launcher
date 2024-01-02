@@ -1,7 +1,7 @@
 import * as child from "child_process";
 import React from "react";
 import { Renderer, Common } from "@k8slens/extensions";
-import { CustomLauncherPreferencesStore } from "./custom-launcher-preference-store";
+import { CustomLauncherPreferencesStore } from "./preference-store";
 
 type Pod = Renderer.K8sApi.Pod;
 
