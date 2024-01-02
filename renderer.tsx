@@ -1,22 +1,60 @@
+import React from "react";
 import { Renderer } from "@k8slens/extensions";
+import {
+  CustomLauncherPrefixHint,
+  CustomLauncherPrefixInput,
+  CustomLauncherSuffixHint,
+  CustomLauncherSuffixInput,
+} from "./src/custom-launcher-preference";
+import { CustomLauncherPreferencesStore } from "./src/custom-launcher-preference-store";
+import { PodLogsMenu } from "./src/log-menu"
+import { PodShellMenu } from "./src/shell-menu"
+import { PodAttachMenu } from "./src/attach-menu"
 
-/**
- * 
- * RendererExtension which extends LensRendererExtension runs in Lens' 'renderer' process (NOT 'main' process)
- * main vs renderer <https://www.electronjs.org/docs/tutorial/quick-start#main-and-renderer-processes>
- * 
- * LensRendererExtension is the interface to Lens' renderer process. Its api allows you to access, configure, 
- * and customize Lens data add custom Lens UI elements, and generally run custom code in Lens' renderer process.
- *
- * To see console statements in 'renderer' process, go to the console tab in DevTools in Lens
- * View > Toggle Developer Tools > Console.
- * 
- */
-export default class OciImageExtensionRenderer extends Renderer.LensExtension {
-  /**
-   * onActivate is called when your extension has been successfully enabled.
-   */
- onActivate() {
-  console.log("activated");
- }
+export default class CustomLauncherRenderer extends Renderer.LensExtension {
+
+  async onActivate() {
+    await CustomLauncherPreferencesStore.createInstance().loadExtension(this);
+  }
+
+  appPreferences = [
+    {
+      title: "Prefix command",
+      components: {
+        Input: () => <CustomLauncherPrefixInput />,
+        Hint: () => <CustomLauncherPrefixHint/>
+      }
+    },
+    {
+      title: "Suffix command",
+      components: {
+        Input: () => <CustomLauncherSuffixInput />,
+        Hint: () => <CustomLauncherSuffixHint/>
+      }
+    },
+  ];
+
+  kubeObjectMenuItems = [
+    {
+      kind: "Pod",
+      apiVersions: ["v1"],
+      components: {
+        MenuItem: (props: Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.Pod>) => <PodAttachMenu {...props} />,
+      },
+    },
+    {
+      kind: "Pod",
+      apiVersions: ["v1"],
+      components: {
+        MenuItem: (props: Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.Pod>) => <PodShellMenu {...props} />,
+      },
+    },
+    {
+      kind: "Pod",
+      apiVersions: ["v1"],
+      components: {
+        MenuItem: (props: Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.Pod>) => <PodLogsMenu {...props} />,
+      },
+    },
+  ];
 }

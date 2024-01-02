@@ -1,5 +1,5 @@
 {
-	"name": "openlens-node-pod-custom-launcher",
+	"name": "@pr4th4m/openlens-node-pod-custom-launcher",
 	"version": "0.0.1",
 	"description": "Open node and pod in custom launcher",
 	"publisher": "@pr4th4m/openlens-node-pod-custom-launcher",
@@ -39,9 +39,6 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"jest": "^28.1.3",
-		"@babel/preset-env": "^7.17.10",
-		"@babel/preset-react": "^7.16.7",
-		"@babel/preset-typescript": "^7.16.7",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^12.1.5"
 	}

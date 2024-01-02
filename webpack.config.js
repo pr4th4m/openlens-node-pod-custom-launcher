@@ -22,6 +22,7 @@ module.exports = [
     externals: [
       {
         "@k8slens/extensions": "var global.LensExtensions",
+        "react": "var global.React",
         "mobx": "var global.Mobx"
       }
     ],
@@ -30,6 +31,7 @@ module.exports = [
     },
     output: {
       libraryTarget: "commonjs2",
+      globalObject: "this",
       filename: "main.js",
       path: path.resolve(__dirname, "dist"),
     },

@@ -35,3 +35,8 @@ Fixed issue #.
 ### 1.1.0
 
 Added features X, Y, and Z.
+
+## TODO:
+
+- Add custom launcher terminal to nodes
+- Add test cases
