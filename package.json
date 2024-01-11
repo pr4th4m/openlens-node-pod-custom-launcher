@@ -30,7 +30,7 @@
 		"@k8slens/extensions": "^6.1.9",
 		"ts-loader": "^9.4.1",
 		"typescript": "^4.9.3",
-		"@types/node": "^16.18.2",
+		"@types/node": "^20.10.7",
 		"@types/react": "^17.0.45",
 		"@types/jest": "^28.1.6",
 		"webpack": "^5.75.0",
